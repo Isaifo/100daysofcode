@@ -9,17 +9,34 @@
     <h1>Livros recomendados</h1>
 
     <?php
-    $books = [
-        'The Dark Forest',
-        'The Three-Body Problem',
-        'Death\'s End'
-    ];
-    ?>
+        $books = [
+            [
+                'name' => 'The Dark Forest', // key points to value
+                'purchaseUrl' => 'www.bookurl.com',
+                'year' =>   '2003'
+            ],
+
+
+
+            [
+                'name' => 'The Three-Body Problem',
+                'purchaseUrl' => 'www.bookurl.com',
+                'year' =>'2006'
+            ],
+            ];
+?>
+            <ul>
+                <?php foreach ($books as $book) : ?>
+                    <li>
+                        <a href="<?= $book['purchaseUrl'] ?>">
+                            <?= $book['name'] ?>
+                        </a>
+                        (<?= $book['year'] ?>)
+                    </li>
+                <?php endforeach; ?>
+            </ul>
     
-    <ul>
-     <?php foreach ($books as $book) : ?>
-         <li><?= $book ?></li>
-        <?php endforeach;?> 
-    </ul>
+    
+   
 </body>
 </html>

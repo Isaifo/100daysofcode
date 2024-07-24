@@ -1,47 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Demo</title>
-    <style>
-        body {
-            
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: sans-serif;
 
-        }
-        
-    </style>
+    <title>Demo</title>
 </head>
 <body>
-    <h1>
+    <h1>Livros recomendados</h1>
 
-   
     <?php
-    $name = "dark matter";
-    $read = false;
-
-    if ($read){
-        $message = "you have read $name";
-       
-    } else {
-        $message = "you have not read $name";
-    }
-
+    $books = [
+        'The Dark Forest',
+        'The Three-Body Problem',
+        'Death\'s End'
+    ];
     ?>
-
-   <h1>
-
-
-   <?= $message; ?>
-
-   </h1>
     
-
-   
-    </h1>
+    <ul>
+     //  <?php foreach ($books as $book){
+          //  echo "<li>$book</li>";
+        }
+        ?> 
+    </ul>
 </body>
 </html>

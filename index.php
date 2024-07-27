@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Demo</title>
+    <title>VEM ISA BACKEND</title>
 </head>
 <body>
    
@@ -38,45 +38,48 @@
         ];
 
 
-            function filterByAuthor($books, $author)      
-              { 
-                $filteredBooks = [];
+        $filterByAuthor = function ($books, $author)      
+        { 
+          $filteredBooks = [];
 
 
-                foreach ($books as $book)
-                {   
-                    if ($book['author'] === $author )
-                    {
-                        $filteredBooks[] = $book;
-                    }
-                    
-                }
-
-                return $filteredBooks;
+          foreach ($books as $book)
+          {   
+              if ($book['author'] === $author )
+              {
+                  $filteredBooks[] = $book;
               }
+              
+          }
 
-           
-        ?>
-        <ul>
-   
+          return $filteredBooks;
+        };
+
+
+        $filteredBooks = $filterByAuthor($books, 'Philip K. Dick');
      
-            <?php foreach(filterByAuthor($books, 'Philip K. Dick') as $book) : ?>
+  ?>
+  <ul>
+
+
+      <?php foreach($filteredBooks as $book) : ?>
+  
+        <li>
         
-              <li>
-              
-                  <a href="<?= $book['purchaseUrl'] ?>">
-                  
-                      <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
-                  
+            <a href="<?= $book['purchaseUrl'] ?>">
+            
+                <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
+            
 
-                  
-                  </a>
-              
-              </li>
+            
+            </a>
+        
+        </li>
 
-              <?php endforeach; ?>
-              
-             </ul>
+        <?php endforeach; ?>
+        
+       </ul>
 
-        </body>
-    </html>
+  </body>
+</html>
+

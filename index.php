@@ -1,16 +1,6 @@
 
+<?php
 
-   
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-
-    <title>VEM ISA BACKEND</title>
-</head>
-<body>
-   
-   <?php
         $books = [
             [
                 'name' => 'Do Androids Dream of Electric Sheep?', 
@@ -44,32 +34,8 @@
         {   
             return $book['author'] === 'Andy Weir';
 
-        }
-        
-        )
-     
-  ?>
-  <ul>
-
-
-      <?php foreach($filteredBooks as $book) : ?>
+        });
+     require "index.view.php";
   
-        <li>
-        
-            <a href="<?= $book['purchaseUrl'] ?>">
-            
-                <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
-            
-
-            
-            </a>
-        
-        </li>
-
-        <?php endforeach; ?>
-        
-       </ul>
-
-  </body>
-</html>
+   
 

@@ -38,25 +38,15 @@
         ];
 
 
-        $filterByAuthor = function ($books, $author)      
-        { 
-          $filteredBooks = [];
 
+        $filteredBooks = array_filter($books, function($book)
+        
+        {   
+            return $book['author'] === 'Andy Weir';
 
-          foreach ($books as $book)
-          {   
-              if ($book['author'] === $author )
-              {
-                  $filteredBooks[] = $book;
-              }
-              
-          }
-
-          return $filteredBooks;
-        };
-
-
-        $filteredBooks = $filterByAuthor($books, 'Philip K. Dick');
+        }
+        
+        )
      
   ?>
   <ul>

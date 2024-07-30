@@ -2,52 +2,20 @@
 
 require "functions.php";
 
+//require "router.php";
 
 
-$uri = parse_url($_SERVER['REQUEST_URI']) ['path'];
+// connect database
 
-//dd(parse_url($uri));
+$dsn = "mysql:host=bvnb3shbn5ecplhduwam-mysql.services.clever-cloud.com;port=3306;dbname=bvnb3shbn5ecplhduwam;password=mD2Cy4nCgLui1IDboGno;charset=utf8mb4;";
+$pdo = new PDO($dsn, 'uzfaevabijyp9ghr');
 
+$statement = $pdo->prepare("SELECT * FROM posts");
 
-$routes = [
+$statement-> execute();
 
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/contact' => 'controllers/about.php'
+$posts = $statement->fetchAll();
 
-
-];
-
-
-function routeToController($uri, $routes) {
-
-
-    if (array_key_exists($uri, $routes)) {
-
-        require $routes[$uri];
-     
-    } else {
-    
-    
-     abort();
-    
-    
-    }
-
-    routeToController($uri, $routes);
-    
-
-}
-
-function abort($code = 404)
-{
-    http_response_code($code);
-
-    require "views/{$code}.php";
-
-    die();
-}
-
-
+dd($posts);
 
 ?>

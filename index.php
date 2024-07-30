@@ -7,15 +7,42 @@ require "functions.php";
 
 // connect database
 
-$dsn = "mysql:host=bvnb3shbn5ecplhduwam-mysql.services.clever-cloud.com;port=3306;dbname=bvnb3shbn5ecplhduwam;password=mD2Cy4nCgLui1IDboGno;charset=utf8mb4;";
-$pdo = new PDO($dsn, 'uzfaevabijyp9ghr');
+$host = 'bvnb3shbn5ecplhduwam-mysql.services.clever-cloud.com';
+$db = 'bvnb3shbn5ecplhduwam';
+$charset = 'utf8mb4';
+$dsn = "mysql:host=$host; dbname=$db; charset=$charset";
+$username = 'uzfaevabijyp9ghr';
+$password = 'mD2Cy4nCgLui1IDboGno';
 
-$statement = $pdo->prepare("SELECT * FROM posts");
 
-$statement-> execute();
 
-$posts = $statement->fetchAll();
+try {
+    // cria uma nova instância PDO
+    $pdo = new PDO($dsn, $username, $password);
+    // define o modo de erro PDO para exceção
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conexão bem-sucedida!<br>";
 
-dd($posts);
+  
+    $statement = $pdo->prepare("SELECT * FROM posts");
 
+    
+    $statement->execute();
+
+    
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    
+    echo "<pre>";
+    print_r($posts);
+    echo "</pre>";
+
+} catch (PDOException $e) {
+    
+    echo "Conexão falhou: " . $e->getMessage();
+}
+
+
+
+//require "controllers/index.php";
 ?>
